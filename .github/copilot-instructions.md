@@ -26,6 +26,43 @@ When assigned an issue that references `octocat-supply-platform#<number>`:
 - **Always link** to both the master issue and local issue
 - **Include integration notes** if your changes depend on other repos
 
+## GitHub MCP Server Setup (Required for Cross-Repo Reporting)
+
+The `report-to-master` skill requires the GitHub MCP Server so Copilot coding agent can comment on issues in the master `octocat-supply-platform` repo.
+
+### Setup Steps
+
+| Step | Action |
+|------|--------|
+| 1 | Go to **Settings → Copilot → Coding agent → MCP configuration** and add the GitHub MCP server JSON config (see below) |
+| 2 | Use `https://api.githubcopilot.com/mcp` as the server URL (not `/readonly`) for write access |
+| 3 | Include `issues` in the `X-MCP-Toolsets` header so the agent can comment on and create issues |
+| 4 | Add a GitHub PAT as `COPILOT_MCP_GITHUB_PERSONAL_ACCESS_TOKEN` in the repo's **Copilot environment secrets** |
+| 5 | Instruct the agent in your issue to report back to the master repo when done |
+
+### MCP Configuration JSON
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp",
+      "headers": {
+        "X-MCP-Toolsets": "issues"
+      }
+    }
+  }
+}
+```
+
+### PAT Scopes Required
+
+The PAT stored in `COPILOT_MCP_GITHUB_PERSONAL_ACCESS_TOKEN` needs:
+- `repo` — full control of private repositories (or `public_repo` for public-only)
+- `issues:write` — create/update issues and comments across repos
+
+> **Note:** Without this setup, the `report-to-master` skill will not be able to comment on the master issue in `octocat-supply-platform`.
+
 ## API Guidelines
 
 - Thin routes → logic in repository classes

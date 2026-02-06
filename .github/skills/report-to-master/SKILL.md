@@ -5,6 +5,34 @@ description: Reports progress back to the master repository (octocat-supply-plat
 
 # Report to Master Repository
 
+## Prerequisites – GitHub MCP Server
+
+This skill requires the GitHub MCP Server configured on this repo so Copilot coding agent can comment on issues in `octocat-supply-platform`.
+
+| Step | Action |
+|------|--------|
+| 1 | Go to **Settings → Copilot → Coding agent → MCP configuration** and add the GitHub MCP server JSON config |
+| 2 | Use `https://api.githubcopilot.com/mcp` as the server URL (not `/readonly`) for write access |
+| 3 | Include `issues` in the `X-MCP-Toolsets` header |
+| 4 | Add a GitHub PAT as `COPILOT_MCP_GITHUB_PERSONAL_ACCESS_TOKEN` in the repo's **Copilot environment secrets** |
+| 5 | Instruct the agent in your issue to report progress back to the master issue |
+
+**MCP Configuration JSON:**
+```json
+{
+  "mcpServers": {
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp",
+      "headers": {
+        "X-MCP-Toolsets": "issues"
+      }
+    }
+  }
+}
+```
+
+---
+
 When working on issues that were spawned from `octocat-supply-platform`, follow this process to maintain traceability:
 
 ## Detecting Master Issue Reference
