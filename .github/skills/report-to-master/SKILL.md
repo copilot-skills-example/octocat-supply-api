@@ -33,7 +33,7 @@ In the PR body, include:
 <Description of changes — Express routes, repository classes, migrations, Swagger docs, etc.>
 
 ## Cross-Repo Dependencies
-- Depends on: <list any PRs in octocat-supply-common this depends on>
+- Depends on: <list any cross-repo PRs this depends on>
 - Required by: <list any PRs in octocat-supply-web that depend on this>
 ```
 

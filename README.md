@@ -46,22 +46,13 @@ Supplier → Headquarters → Branch
 
 See the [platform repo architecture docs](https://github.com/octocat-supply/octocat-supply-platform/blob/main/architecture/entity-model.md) for full field definitions.
 
-## Shared Types
-
-This repo depends on `@octocat-supply/common` for shared TypeScript interfaces. Install from the common repo:
-
-```bash
-npm install @octocat-supply/common
-```
-
 ## Part Of
 
 | Repo | Purpose |
 |------|---------|
-| [octocat-supply-platform](https://github.com/octocat-supply/octocat-supply-platform) | Master orchestrator |
-| [octocat-supply-web](https://github.com/octocat-supply/octocat-supply-web) | Frontend |
+| [octocat-supply-platform](https://github.com/copilot-skills-example/octocat-supply-platform) | Master orchestrator |
+| [octocat-supply-web](https://github.com/copilot-skills-example/octocat-supply-web) | Frontend |
 | **octocat-supply-api** (this) | REST API |
-| [octocat-supply-common](https://github.com/octocat-supply/octocat-supply-common) | Shared types |
 
 ## License
 
