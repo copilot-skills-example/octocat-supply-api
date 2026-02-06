@@ -37,7 +37,7 @@ export interface SearchSuggestion {
   id: number;
   text: string;
   subtext: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, string | number | boolean>;
 }
 
 export interface SearchResponse {

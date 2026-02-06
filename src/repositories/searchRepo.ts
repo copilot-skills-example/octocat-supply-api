@@ -53,7 +53,12 @@ export class SearchRepository {
       ]);
 
       return rows.map(row => {
-        const product = objectToCamelCase<any>(row);
+        const product = objectToCamelCase<{
+          productId: number;
+          name: string;
+          sku: string;
+          price: number;
+        }>(row);
         return {
           type: 'product' as const,
           id: product.productId,
@@ -103,7 +108,11 @@ export class SearchRepository {
       ]);
 
       return rows.map(row => {
-        const supplier = objectToCamelCase<any>(row);
+        const supplier = objectToCamelCase<{
+          supplierId: number;
+          name: string;
+          email: string;
+        }>(row);
         return {
           type: 'supplier' as const,
           id: supplier.supplierId,
@@ -150,7 +159,12 @@ export class SearchRepository {
       ]);
 
       return rows.map(row => {
-        const order = objectToCamelCase<any>(row);
+        const order = objectToCamelCase<{
+          orderId: number;
+          name: string;
+          orderDate: string;
+          status: string;
+        }>(row);
         return {
           type: 'order' as const,
           id: order.orderId,
